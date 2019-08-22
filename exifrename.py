@@ -28,7 +28,7 @@ def extractModel(metadata):
 def extractDate(metadata):
     for dk in DATETIME_EXIF:
         if dk in metadata:
-            return dtparser.parse(re.sub(r' [A-Z]{3}$', '', metadata[dk]))
+            return dtparser.parse(re.sub(r' [A-Z]{3}$', '', re.sub(':', '-', metadata[dk], 2)))
     return None
 
 def translateModel(model):
